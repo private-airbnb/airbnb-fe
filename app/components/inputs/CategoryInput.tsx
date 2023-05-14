@@ -1,9 +1,9 @@
 'use client';
 
-import { IconType } from "react-icons";
+import { IconType } from 'react-icons';
 
 interface CategoryBoxProps {
-  icon: IconType,
+  icon: IconType;
   label: string;
   selected?: boolean;
   onClick: (value: string) => void;
@@ -13,9 +13,9 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
   icon: Icon,
   label,
   selected,
-  onClick
+  onClick,
 }) => {
-  return ( 
+  return (
     <div
       onClick={() => onClick(label)}
       className={`
@@ -32,11 +32,9 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
       `}
     >
       <Icon size={30} />
-      <div className="font-semibold">
-        {label}
-      </div>
+      <div className="font-semibold">{label}</div>
     </div>
-   );
-}
- 
+  );
+};
+
 export default CategoryBox;
