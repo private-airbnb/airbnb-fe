@@ -1,3 +1,6 @@
+import { Reservation } from '../interfaces/reservation.interface';
+import { reservationsMock } from '../mocks/reservation.mock';
+
 interface IParams {
   listingId?: string;
   userId?: string;
@@ -22,7 +25,8 @@ export default async function getReservations(params: IParams) {
       query.listing = { userId: authorId };
     }
 
-    const reservations: any = undefined;
+    const reservations: Reservation[] = reservationsMock;
+
     // const reservations = await prisma.reservation.findMany({
     //   where: query,
     //   include: {
@@ -35,12 +39,8 @@ export default async function getReservations(params: IParams) {
 
     const safeReservations = reservations?.map((reservation: any) => ({
       ...reservation,
-      createdAt: reservation.createdAt.toISOString(),
-      startDate: reservation.startDate.toISOString(),
-      endDate: reservation.endDate.toISOString(),
       listing: {
         ...reservation.listing,
-        createdAt: reservation.listing.createdAt.toISOString(),
       },
     }));
 

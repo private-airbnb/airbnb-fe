@@ -1,9 +1,13 @@
-export type SafeListing = Omit<any, 'createdAt'> & {
+import { Listing } from '../interfaces/listing.interface';
+import { Reservation } from '../interfaces/reservation.interface';
+import { User } from '../interfaces/user.interface';
+
+export type SafeListing = Omit<Listing, 'createdAt'> & {
   createdAt: string;
 };
 
 export type SafeReservation = Omit<
-any,
+  Reservation,
   'createdAt' | 'startDate' | 'endDate' | 'listing'
 > & {
   createdAt: string;
@@ -13,7 +17,7 @@ any,
 };
 
 export type SafeUser = Omit<
-any,
+  User,
   'createdAt' | 'updatedAt' | 'emailVerified'
 > & {
   createdAt: string;

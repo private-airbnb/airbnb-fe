@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 
 import getCurrentUser from '@/app/actions/getCurrentUser';
+import { User } from '@/app/interfaces/user.interface';
+import { userMock } from '@/app/mocks/user.mock';
 
 interface IParams {
   listingId?: string;
@@ -23,7 +25,8 @@ export async function POST(request: Request, { params }: { params: IParams }) {
 
   favoriteIds.push(listingId);
 
-  const user = undefined;
+  const user: User = userMock;
+
   // const user = await prisma.user.update({
   //   where: {
   //     id: currentUser.id,
@@ -56,7 +59,8 @@ export async function DELETE(
 
   favoriteIds = favoriteIds.filter((id) => id !== listingId);
 
-  const user: any = undefined;
+  const user: User = userMock;
+
   // const user = await prisma.user.update({
   //   where: {
   //     id: currentUser.id,

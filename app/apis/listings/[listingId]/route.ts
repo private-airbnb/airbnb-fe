@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 
 import getCurrentUser from '@/app/actions/getCurrentUser';
+import { Listing } from '@/app/interfaces/listing.interface';
+import { listingsMock } from '@/app/mocks/listing.mock';
 
 interface IParams {
   listingId?: string;
@@ -22,7 +24,8 @@ export async function DELETE(
     throw new Error('Invalid ID');
   }
 
-  const listing: any = undefined;
+  const listing: Listing[] = listingsMock;
+
   // const listing = await prisma.listing.deleteMany({
   //   where: {
   //     id: listingId,
