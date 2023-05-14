@@ -1,20 +1,9 @@
-import { getServerSession } from 'next-auth/next';
-
-import { authOptions } from '@/pages/api/auth/[...nextauth]';
-
-export async function getSession() {
-  return await getServerSession(authOptions);
-}
+import { userMock } from '../mocks/user.mock';
 
 export default async function getCurrentUser() {
   try {
-    const session = await getSession();
+    const currentUser: any = userMock;
 
-    if (!session?.user?.email) {
-      return null;
-    }
-
-    const currentUser: any = undefined;
     // const currentUser = await prisma.user.findUnique({
     //   where: {
     //     email: session.user.email as string,
@@ -27,9 +16,6 @@ export default async function getCurrentUser() {
 
     return {
       ...currentUser,
-      createdAt: currentUser.createdAt.toISOString(),
-      updatedAt: currentUser.updatedAt.toISOString(),
-      emailVerified: currentUser.emailVerified?.toISOString() || null,
     };
   } catch (error: any) {
     return null;

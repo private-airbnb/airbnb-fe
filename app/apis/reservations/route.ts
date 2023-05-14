@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 
 import getCurrentUser from '@/app/actions/getCurrentUser';
+import { Listing } from '@/app/interfaces/listing.interface';
+import { listingMock } from '@/app/mocks/listing.mock';
 
 export async function POST(request: Request) {
   const currentUser = await getCurrentUser();
@@ -16,7 +18,8 @@ export async function POST(request: Request) {
     return NextResponse.error();
   }
 
-  const listingAndReservation: any = undefined;
+  const listingAndReservation: Listing = listingMock;
+
   // const listingAndReservation = await prisma.listing.update({
   //   where: {
   //     id: listingId,

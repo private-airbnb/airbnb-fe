@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 
 import getCurrentUser from '@/app/actions/getCurrentUser';
+import { listingMock } from '@/app/mocks/listing.mock';
+import { Listing } from '@/app/interfaces/listing.interface';
 
 export async function POST(request: Request) {
   const currentUser = await getCurrentUser();
@@ -28,7 +30,8 @@ export async function POST(request: Request) {
     }
   });
 
-  const listing: any = undefined;
+  const listing: Listing = listingMock;
+
   // const listing = await prisma.listing.create({
   //   data: {
   //     title,

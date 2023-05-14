@@ -1,3 +1,6 @@
+import { Listing } from '../interfaces/listing.interface';
+import { listingsMock } from '../mocks/listing.mock';
+
 export interface IListingsParams {
   userId?: string;
   guestCount?: number;
@@ -73,7 +76,8 @@ export default async function getListings(params: IListingsParams) {
       };
     }
 
-    const listings: any = undefined;
+    const listings: Listing[] = listingsMock;
+
     // const listings = await prisma.listing.findMany({
     //   where: query,
     //   orderBy: {
@@ -83,7 +87,6 @@ export default async function getListings(params: IListingsParams) {
 
     const safeListings = listings.map((listing: any) => ({
       ...listing,
-      createdAt: listing.createdAt.toISOString(),
     }));
 
     return safeListings;

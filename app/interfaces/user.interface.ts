@@ -1,13 +1,18 @@
+import { Account } from './account.interface';
+import { Listing } from './listing.interface';
+import { Reservation } from './reservation.interface';
 export interface User {
-  id: number;
-  organizationID: number;
-  userTypeID?: number;
-  userID: number;
-  producerID?: number;
-  purchaserID?: number;
-  firstName?: string;
-  lastName?: string;
+  id: string;
+  name?: string;
   email?: string;
-  telephone?: string;
-  loginTime: number;
+  emailVerified?: Date;
+  image?: string;
+  hashedPassword?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  favoriteIds: string[];
+
+  accounts?: Account[];
+  listings?: Listing[];
+  reservations?: Reservation[];
 }

@@ -1,3 +1,5 @@
+import { Listing } from '../interfaces/listing.interface';
+import { favoritesListingMock } from '../mocks/listing.mock';
 import getCurrentUser from './getCurrentUser';
 
 export default async function getFavoriteListings() {
@@ -8,7 +10,8 @@ export default async function getFavoriteListings() {
       return [];
     }
 
-    const favorites: any = undefined;
+    const favorites: Listing[] = favoritesListingMock;
+
     // const favorites = await prisma.listing.findMany({
     //   where: {
     //     id: {

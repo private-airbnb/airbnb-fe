@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 
 import getCurrentUser from '@/app/actions/getCurrentUser';
+import { Reservation } from '@/app/interfaces/reservation.interface';
+import { reservationsMock } from '@/app/mocks/reservation.mock';
 
 interface IParams {
   reservationId?: string;
@@ -22,7 +24,8 @@ export async function DELETE(
     throw new Error('Invalid ID');
   }
 
-  const reservation: any = undefined;
+  const reservation: Reservation[] = reservationsMock;
+
   // const reservation = await prisma.reservation.deleteMany({
   //   where: {
   //     id: reservationId,
